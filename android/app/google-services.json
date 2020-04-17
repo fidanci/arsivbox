@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "770177496774",
+    "firebase_url": "https://arsivbox-5d6a9.firebaseio.com",
+    "project_id": "arsivbox-5d6a9",
+    "storage_bucket": "arsivbox-5d6a9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:770177496774:android:8268a9b79b4ae59bfd89c7",
+        "android_client_info": {
+          "package_name": "com.example.arsivbox"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "770177496774-n34u9rnsocat7tn0hiltlsqond2i2qdr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXDHoob5JJT7FGpe6MJirrfIXpj_9V_Lo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "770177496774-n34u9rnsocat7tn0hiltlsqond2i2qdr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
