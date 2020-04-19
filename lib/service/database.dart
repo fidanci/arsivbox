@@ -8,8 +8,8 @@ class DatabaseService {
  // StreamSubscription<Event> vtakis;
   FirebaseDatabase database = new FirebaseDatabase();
   DatabaseError error;
-
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  FirebaseUser firebaseUser;
 
   User _userFromFirebaseUser(FirebaseUser user){
     return user != null ? User(uid: user.uid,) : null;
@@ -78,22 +78,22 @@ class DatabaseService {
     return databaseReference;
   }
 
-  messageSave(String uid, String username, String message){
-    databaseReference = database.reference().child('message');
+  messageSend(String uid, String email, String message, String timestamp){
+    databaseReference = database.reference().child('chat');
     databaseReference.push().set(<String, Object>{
-      'uid' : uid,
-      'username' : username,
+      'uid' : firebaseUser.uid,
+      'email' : email,
       'message' : message,
+       "timestamp": DateTime.now().millisecondsSinceEpoch
     }).then((onValue){
-      print('mesaj gönderildi...');
-    }).catchError((onError) {
-      print('hava var kardeşim : $onError');
+      print('İşlem halloldu reis mesajını ilettik');
+    }).catchError((onError){
+      print('Güvercin hedefe ulaşamadı.... $onError');
     });
   }
 
   messageList(){
     return databaseReference;
   }
-
 
 }
