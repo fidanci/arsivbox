@@ -26,7 +26,6 @@ class _FilmBnbState extends State<FilmBnb> {
 
   @override
   Widget build(BuildContext context) {
-
     return StreamBuilder(
       stream: _firebaseRef.onValue,
       builder: (context, snap) {
@@ -38,49 +37,50 @@ class _FilmBnbState extends State<FilmBnb> {
           data.forEach((index, data) => item.add({"key": index, ...data}));
 
           return GridView.builder(
-              itemCount: item.length,
-              gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 1),
-              itemBuilder: (BuildContext context, int index){
-                return GestureDetector(
-                  onTap: () {
-                    _launchURL(item[index]['filmLink']);
-                  },
-                  child: Column(
-
-                    children: <Widget>[
-                     SizedBox(height: 10,),
-                      Expanded(
-                          child: Image(
-                            image: NetworkImage(item[index]['filmFotoLink']),
-                            height: 140,
-                            fit: BoxFit.fitWidth,
-                          ),
+            itemCount: item.length,
+            gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 1),
+            itemBuilder: (BuildContext context, int index) {
+              return GestureDetector(
+                onTap: () {
+                  _launchURL(item[index]['filmLink']);
+                },
+                child: Column(
+                  children: <Widget>[
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Expanded(
+                      child: Image(
+                        image: NetworkImage(item[index]['filmFotoLink']),
+                        height: 140,
+                        fit: BoxFit.fitWidth,
                       ),
-                      ListTile(
-                        title: Text(item[index]['filmBaslik']),
-                        subtitle: Text(item[index]['filmAciklama']),
-                      ),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: <Widget>[
-                          FlatButton.icon(
-                            icon: Icon(Icons.personal_video),
-                            label: Text('Filmi İzle'),
-                            onPressed: () => _launchURL(item[index]['filmLink']),
-                          ),
-                        ],
-                      ),
-                      Divider(
-                        color: Colors.blue[400],
-                        indent: 20,
-                        endIndent: 20,
-                        height: 50,
-                      ),
-                    ],
-                  ),
-                );
-              },
+                    ),
+                    ListTile(
+                      title: Text(item[index]['filmBaslik']),
+                      subtitle: Text(item[index]['filmAciklama']),
+                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: <Widget>[
+                        FlatButton.icon(
+                          icon: Icon(Icons.personal_video),
+                          label: Text('Filmi İzle'),
+                          onPressed: () => _launchURL(item[index]['filmLink']),
+                        ),
+                      ],
+                    ),
+                    Divider(
+                      color: Colors.blue[400],
+                      indent: 20,
+                      endIndent: 20,
+                      height: 50,
+                    ),
+                  ],
+                ),
+              );
+            },
           );
         } else
           return Text("Yükleniyor...");

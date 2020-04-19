@@ -6,7 +6,6 @@ import 'package:arsivbox/service/database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-
 class HomePage extends StatefulWidget {
   const HomePage({Key key, this.user}) : super(key: key);
   final FirebaseUser user;
@@ -25,7 +24,6 @@ class _HomePageState extends State<HomePage> {
 
   String baslik, aciklama, link, fotoLink;
   String appBarTitle = 'ArşivBox';
-
 
   int aktifOge = 0;
   gecerliSayfa(int aktif) {
@@ -174,67 +172,80 @@ class _HomePageState extends State<HomePage> {
     Navigator.pop(context);
   }
 
-
-
   @override
   Widget build(BuildContext context) {
-
     return Column(
       children: <Widget>[
         Expanded(
           child: DefaultTabController(
-              length: 2,
-               child: Scaffold(
-                 backgroundColor: Colors.white,
-                 appBar: AppBar(
-                   backgroundColor: Colors.white,
-                   elevation: 0.0,
-                   centerTitle: true,
-                   title: Text(
-                     appBarTitle,
-                     style: TextStyle(
-                       color: Colors.blue[400],
-                     ),
-                   ),
-                   actions: <Widget>[
-                     FlatButton.icon(
-                       onPressed: () async {
-                         addScreen();
-                       },
-                       icon: Icon(
-                         Icons.note_add,
-                         color: Colors.blue[400],
-                       ),
-                       label: Text('Link'),
-                     ),
-                     FlatButton.icon(
-                       onPressed: () async {
-                         filmAddScreen();
-                       },
-                       icon: Icon(
-                         Icons.video_call,
-                         color: Colors.blue[400],
-                       ),
-                       label: Text('Film'),
-                     ),
-                   ],
-                   bottom: TabBar(
-                     tabs: <Widget>[
-                       Tab(icon: Icon(Icons.link, color: Colors.blue[400],),),
-                       Tab(icon: Icon(Icons.ondemand_video, color: Colors.blue[400],),),
-                     //  Tab(icon: Icon(Icons.chat, color: Colors.blue[400],),),
-                     ],
-                   ),
-                 ),
-                 body: TabBarView(
-                   children: <Widget>[
-                     LinksBnb(),
-                     FilmBnb(),
-                     //TartismaBnb(),
-                   ],
-                 ),
-                 //gecerliSayfa(aktifOge),
-                 /*bottomNavigationBar: new BottomNavigationBar(
+            length: 3,
+            child: Scaffold(
+              backgroundColor: Colors.white,
+              appBar: AppBar(
+                backgroundColor: Colors.white,
+                elevation: 0.0,
+                centerTitle: true,
+                title: Text(
+                  appBarTitle,
+                  style: TextStyle(
+                    color: Colors.blue[400],
+                  ),
+                ),
+                actions: <Widget>[
+                  FlatButton.icon(
+                    onPressed: () async {
+                      addScreen();
+                    },
+                    icon: Icon(
+                      Icons.note_add,
+                      color: Colors.blue[400],
+                    ),
+                    label: Text('Link'),
+                  ),
+                  FlatButton.icon(
+                    onPressed: () async {
+                      filmAddScreen();
+                    },
+                    icon: Icon(
+                      Icons.video_call,
+                      color: Colors.blue[400],
+                    ),
+                    label: Text('Film'),
+                  ),
+                ],
+                bottom: TabBar(
+                  tabs: <Widget>[
+                    Tab(
+                      icon: Icon(
+                        Icons.link,
+                        color: Colors.blue[400],
+                      ),
+                    ),
+                    Tab(
+                      icon: Icon(
+                        Icons.ondemand_video,
+                        color: Colors.blue[400],
+                      ),
+                    ),
+                    Tab(
+                      icon: Icon(
+                        Icons.chat,
+                        color: Colors.blue[400],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              body: TabBarView(
+                children: <Widget>[
+                  LinksBnb(),
+                  FilmBnb(),
+                  TartismaBnb(),
+                ],
+              ),
+
+              //gecerliSayfa(aktifOge),
+              /*bottomNavigationBar: new BottomNavigationBar(
               type: BottomNavigationBarType.shifting,
               currentIndex: aktifOge,
               items: [
@@ -271,7 +282,7 @@ class _HomePageState extends State<HomePage> {
                 setState(() {});
               },
             ),*/
-               ),
+            ),
           ),
         ),
       ],

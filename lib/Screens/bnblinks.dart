@@ -29,7 +29,7 @@ class _LinksBnbState extends State<LinksBnb> {
           Map data = snap.data.snapshot.value;
           List item = [];
           data.forEach((index, data) => item.add({"key": index, ...data}));
-          return  ListView.builder(
+          return ListView.builder(
             itemCount: item.length,
             itemBuilder: (context, index) {
               return Card(
@@ -42,9 +42,10 @@ class _LinksBnbState extends State<LinksBnb> {
                     ),
                     Row(
                       children: <Widget>[
-                        FlatButton.icon(onPressed: () => _launchURL(item[index]['link']),
-                            icon: Icon(Icons.link),
-                            label: Text('Linke Git'),
+                        FlatButton.icon(
+                          onPressed: () => _launchURL(item[index]['link']),
+                          icon: Icon(Icons.link),
+                          label: Text('Linke Git'),
                         ),
                       ],
                     ),
