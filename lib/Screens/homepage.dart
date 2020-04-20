@@ -25,16 +25,6 @@ class _HomePageState extends State<HomePage> {
   String baslik, aciklama, link, fotoLink;
   String appBarTitle = 'ArşivBox';
 
-  int aktifOge = 0;
-  gecerliSayfa(int aktif) {
-    if (aktif == 0) {
-      return LinksBnb();
-    } else if (aktif == 1) {
-      return FilmBnb();
-    } else if (aktif == 2) {
-      return TartismaBnb();
-    }
-  }
 
   void addScreen() {
     showDialog(
@@ -243,45 +233,6 @@ class _HomePageState extends State<HomePage> {
                   TartismaBnb(),
                 ],
               ),
-
-              //gecerliSayfa(aktifOge),
-              /*bottomNavigationBar: new BottomNavigationBar(
-              type: BottomNavigationBarType.shifting,
-              currentIndex: aktifOge,
-              items: [
-                new BottomNavigationBarItem(
-                  backgroundColor: Colors.white,
-                  icon: new Icon(
-                    Icons.link,
-                    color: Colors.blue[400],
-                  ),
-                  title: Text(
-                    'Linkler',
-                    style: TextStyle(color: Colors.blue[400]),
-                  ),
-                ),
-                new BottomNavigationBarItem(
-                  icon: new Icon(
-                    Icons.ondemand_video,
-                    color: Colors.blue[400],
-                  ),
-                  title: Text('Filmler',
-                      style: TextStyle(color: Colors.blue[400])),
-                ),
-                new BottomNavigationBarItem(
-                  icon: new Icon(
-                    Icons.chat,
-                    color: Colors.blue[400],
-                  ),
-                  title:
-                      Text('Sohbet', style: TextStyle(color: Colors.blue[400])),
-                ),
-              ],
-              onTap: (int i) {
-                aktifOge = i;
-                setState(() {});
-              },
-            ),*/
             ),
           ),
         ),
