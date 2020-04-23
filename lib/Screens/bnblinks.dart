@@ -55,7 +55,7 @@ class _LinksBnbState extends State<LinksBnb> {
             },
           );
         } else
-          return Text("Yükleniyor...");
+          return Center(child: Text("Yükleniyor..."));
       },
     );
   }

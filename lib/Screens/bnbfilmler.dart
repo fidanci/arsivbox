@@ -83,7 +83,7 @@ class _FilmBnbState extends State<FilmBnb> {
             },
           );
         } else
-          return Text("Yükleniyor...");
+          return Center(child: Text("Yükleniyor..."));
       },
     );
   }

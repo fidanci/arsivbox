@@ -25,7 +25,6 @@ class _HomePageState extends State<HomePage> {
   String baslik, aciklama, link, fotoLink;
   String appBarTitle = 'ArşivBox';
 
-
   void addScreen() {
     showDialog(
       context: context,
@@ -240,3 +239,4 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+//sevdan bir ateş

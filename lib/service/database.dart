@@ -44,7 +44,7 @@ class DatabaseService {
 
   postSave(String baslik, String aciklama, String link) {
     databaseReference = database.reference().child('posts');
-    databaseReference.push().set(<String, Object>{
+    databaseReference.push().set(<String, dynamic>{
       'baslik': baslik,
       'aciklama': aciklama,
       'link': link,
