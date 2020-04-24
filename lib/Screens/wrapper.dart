@@ -1,5 +1,6 @@
 import 'package:arsivbox/Authenticate/authenticate.dart';
 import 'package:arsivbox/Screens/homepage.dart';
+import 'package:arsivbox/screenJson/homejson.dart';
 import 'package:arsivbox/models/user.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -12,7 +13,7 @@ class Wrapper extends StatelessWidget {
       return Authenticate();
     }
     else{
-      return HomePage();
+      return HomeViewJson();
     }
   }
 }
