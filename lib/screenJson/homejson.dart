@@ -68,7 +68,7 @@ class _HomeViewJsonState extends State<HomeViewJson> {
 
   Widget get _fabButton => FabCircularMenu(
         fabColor: Colors.blue[400],
-        animationDuration: Duration(milliseconds: 1500),
+        animationDuration: Duration(milliseconds: 2000),
         animationCurve: Curves.easeInOutCirc,
         ringDiameter: 240.0,
         ringWidth: 65.0,
@@ -85,8 +85,8 @@ class _HomeViewJsonState extends State<HomeViewJson> {
                 size: 30,
               ),
               onPressed: () {
-                Navigator.pop(context);
-                Navigator.of(context).push(
+                Navigator.of(context);
+                Navigator.push(context,
                     MaterialPageRoute(builder: (context) => AddLinkJson()));
               }),
           IconButton(
@@ -99,8 +99,7 @@ class _HomeViewJsonState extends State<HomeViewJson> {
                 Navigator.pop(context);
                 Navigator.of(context).push(
                     MaterialPageRoute(builder: (context) => AddFilmJson()));
-              }
-          ),
+              }),
         ],
       );
 }

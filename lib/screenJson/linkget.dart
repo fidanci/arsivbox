@@ -22,9 +22,11 @@ class _LinkTabJsonState extends State<LinkTabJson> {
         switch (snapshot.connectionState) {
           case ConnectionState.done:
             if (snapshot.hasData) {
+              linkList.reversed;
               linkList = snapshot.data;
               print(linkList.toString());
-              return _listView;
+
+              return _memoxxx();
             }
             return Center(
               child: Text('Hata'),
@@ -40,45 +42,105 @@ class _LinkTabJsonState extends State<LinkTabJson> {
   }
 
   Widget get _listView => AnimationLimiter(
-          child: ListView.separated(
-        separatorBuilder: (conext, index) => Divider(),
+          child: ListView.builder(
         itemCount: linkList.length,
         itemBuilder: (context, index) {
           return AnimationConfiguration.staggeredList(
             position: index,
-            duration: const Duration(milliseconds: 375),
+            duration: const Duration(milliseconds: 600),
             child: SlideAnimation(
               verticalOffset: 50.0,
               child: FadeInAnimation(
-                child: dismiss(
-                    CustomCard(
-                      title: linkList[index].baslik,
-                      subtitle: linkList[index].aciklama,
-                      link: linkList[index].link,
-                    ),
-                    linkList[index].key),
+                child: CustomCard(
+                  title: linkList[index].baslik,
+                  subtitle: linkList[index].aciklama,
+                  link: linkList[index].link,
+                  bottomSheet: bottomSheet(linkList[index].key),
+                ),
               ),
             ),
           );
         },
       ));
 
-  Widget dismiss(Widget child, String key) {
+  Widget _memoxxx() {
+    return linkList.length != 0
+        ? RefreshIndicator(child: _listView, onRefresh: _getData)
+        : Center(child: CircularProgressIndicator());
+  }
+
+  Future<void> _getData() async {
+    setState(() {
+      return LinkTabJson();
+    });
+  }
+
+  /*  Widget dismiss(Widget child, String key) {
     return Dismissible(
-      onDismissed: (DismissDirection) async {
-        await service.removeLink(key);
+      onDismissed: (direction) async {
+        // await service.removeLink(key);
+        showModalBottomSheet(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(top: Radius.circular(25)),
+            ),
+            context: context,
+            builder: (context) => bottomSheet(key));
       },
       background: Container(
-        color: Colors.red,
+        color: Colors.green,
         child: Center(
           child: Text(
-            'Sliniyor',
+            'İşlem Seçin',
             style: TextStyle(color: Colors.white),
           ),
         ),
       ),
       key: UniqueKey(),
       child: child,
+    );
+  } */
+
+  Widget bottomSheet(String key) {
+    return Container(
+      child: Column(
+        children: <Widget>[
+          Divider(
+            indent: 165,
+            endIndent: 165,
+            thickness: 2,
+            color: Colors.grey,
+          ),
+          _deleteCardBtn(key),
+        ],
+      ),
+    );
+  }
+
+  Widget _deleteCardBtn(String key) {
+    return Container(
+      padding: EdgeInsets.symmetric(
+        vertical: 25.0,
+      ),
+      width: double.infinity,
+      child: RaisedButton(
+        elevation: 5.0,
+        onPressed: () async {
+          await service.removeLink(key);
+          Navigator.pop(context);
+        },
+        padding: EdgeInsets.all(15.0),
+        color: Colors.red,
+        child: Text(
+          'Sil',
+          style: TextStyle(
+            color: Colors.white,
+            letterSpacing: 1.5,
+            fontSize: 18.0,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'OpenSans',
+          ),
+        ),
+      ),
     );
   }
 }
