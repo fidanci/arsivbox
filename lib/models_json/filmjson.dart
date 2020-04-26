@@ -3,6 +3,7 @@ class FilmJson {
   String filmBaslik;
   String filmFotoLink;
   String filmLink;
+   String key;
 
   FilmJson(
       {this.filmAciklama, this.filmBaslik, this.filmFotoLink, this.filmLink});
@@ -21,5 +22,16 @@ class FilmJson {
     data['filmFotoLink'] = this.filmFotoLink;
     data['filmLink'] = this.filmLink;
     return data;
+  }
+}
+
+class FilmList{
+  List<FilmJson> films = [];
+  FilmList.fromJsonList(Map value){
+    value.forEach((key, value){
+      var film = FilmJson.fromJson(value);
+      film.key = key;
+      films.add(film);
+    });
   }
 }

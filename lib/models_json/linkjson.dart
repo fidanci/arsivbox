@@ -1,6 +1,6 @@
-import 'dart:collection';
 
 class LinkJson {
+
   String aciklama;
   String baslik;
   String link;
@@ -9,6 +9,7 @@ class LinkJson {
   LinkJson({this.aciklama, this.baslik, this.link});
 
   LinkJson.fromJson(Map<String, dynamic> json) {
+    
     aciklama = json['aciklama'];
     baslik = json['baslik'];
     link = json['link'];
@@ -16,6 +17,7 @@ class LinkJson {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
+    
     data['aciklama'] = this.aciklama;
     data['baslik'] = this.baslik;
     data['link'] = this.link;

@@ -29,7 +29,7 @@ class _LinkTabJsonState extends State<LinkTabJson> {
               return _memoxxx();
             }
             return Center(
-              child: Text('Hata'),
+              child: Text('Veri yok!'),
             );
 
           default:

@@ -1,7 +1,9 @@
+import 'package:arsivbox/models_json/linkjson.dart';
 import 'package:arsivbox/screenJson/add_screen/addfilmjson.dart';
 import 'package:arsivbox/screenJson/add_screen/addlinkjson.dart';
 import 'package:arsivbox/screenJson/filmjson.dart';
 import 'package:arsivbox/screenJson/linkget.dart';
+import 'package:arsivbox/service/apiservice.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fab_circular_menu/fab_circular_menu.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +18,18 @@ class HomeViewJson extends StatefulWidget {
 }
 
 class _HomeViewJsonState extends State<HomeViewJson> {
+  GlobalKey<FormState> formKey = GlobalKey(debugLabel: "formKey");
+  TextEditingController controllerTitle = TextEditingController();
+  TextEditingController controllerSubtitle = TextEditingController();
+  TextEditingController controllerLink = TextEditingController();
+
+  String validator(val) {
+    if (val.isEmpty) {
+      return "Bu alan boş geçilemez";
+    }
+    return null;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
